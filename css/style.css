@@ -1,0 +1,255 @@
+/* ============================================================================
+   ACADEMY STUDIO — DESIGN SYSTEM (Academic Bento Modern + UI/UX Pro Max)
+   Referensi: DESIGN.md, UIUX_DESIGN_ACADEMY_STUDIO.md, & /ui-ux-pro-max
+   ============================================================================ */
+
+:root {
+  /* Contextual Surface Foundations */
+  --landing-bg: #FAF6F0;
+  --auth-bg: #EAF4FC;
+  --hub-bg: #F8F9FD;
+  --workspace-bg: #0F1429;
+  --workspace-surface: #1A213B;
+  --surface-lowest: #FFFFFF;
+  --surface-low: #F6F2F7;
+  --surface-container: #F0EDF1;
+  --surface-high: #EAE7EB;
+
+  /* Brand & Semantic Colors */
+  --primary: #6C5CE7;
+  --primary-deep: #5341CD;
+  --primary-fixed: #E4DFFF;
+  --secondary-coral: #FF5A36;
+  --secondary-deep: #B52603;
+  --tertiary-blue: #1A73E8;
+  --accent-neon-violet: #7C3AED;
+  --coin-gold: #F5A623;
+
+  /* Text & Borders (WCAG AA >= 4.5:1) */
+  --ink-primary: #18181B;
+  --ink-secondary: #474554;
+  --ink-muted: #52525B;
+  --border-light: #E4E4E7;
+  --border-warm: #EADFCB;
+  --border-nocturnal: rgba(255, 255, 255, 0.08);
+
+  /* Export MIME Badges */
+  --badge-docx: #2563EB;
+  --badge-pdf: #DC2626;
+  --badge-pptx: #EA580C;
+
+  /* Elevation */
+  --shadow-level-2: 0 10px 30px -5px rgba(24, 24, 27, 0.05), 0 4px 6px -2px rgba(24, 24, 27, 0.02);
+  --shadow-level-3: 0 20px 40px -10px rgba(108, 92, 231, 0.14), 0 8px 16px -4px rgba(24, 24, 27, 0.05);
+  --shadow-nocturnal: 0 0 22px rgba(124, 58, 237, 0.25);
+
+  /* Typography */
+  --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-body);
+    color: var(--ink-primary);
+    background-color: var(--landing-bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overscroll-behavior-y: none;
+  }
+
+  /* Accessible Focus Rings (ui-ux-pro-max Priority #1) */
+  :focus-visible {
+    outline: 2px solid var(--primary) !important;
+    outline-offset: 2px !important;
+  }
+}
+
+/* Typography Helpers */
+.font-display-title { font-family: var(--font-display); }
+.font-body-text { font-family: var(--font-body); }
+.font-mono-data { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+/* Touch & Interaction Safety (ui-ux-pro-max Priority #2: >= 44px touch targets) */
+.btn-touch {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: transform 150ms ease, background-color 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  cursor: pointer;
+}
+.btn-touch:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* Paper Editorial Grid Overlay */
+.bg-paper-grid {
+  background-image: radial-gradient(#E7DFC9 0.85px, transparent 0.85px);
+  background-size: 24px 24px;
+}
+
+/* Bento Card Depth */
+.bento-card {
+  background-color: var(--surface-lowest);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  box-shadow: var(--shadow-level-2);
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+}
+.bento-card-interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-level-3);
+  border-color: rgba(108, 92, 231, 0.35);
+}
+
+/* Nocturnal VIP Pejuang Skripsi Surface (#0F1429 & #1A213B) */
+.nocturnal-canvas {
+  background-color: var(--workspace-bg);
+  color: #F8FAFC;
+}
+.nocturnal-card {
+  background-color: var(--workspace-surface);
+  border: 1px solid var(--border-nocturnal);
+  border-radius: 16px;
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+}
+.nocturnal-card:hover {
+  border-color: rgba(124, 58, 237, 0.45);
+  box-shadow: var(--shadow-nocturnal);
+}
+
+/* Contextual Shell Transitions */
+.spa-view {
+  display: none;
+  animation: fadeSlideIn 180ms ease-out;
+}
+.spa-view.active {
+  display: block;
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Dikti 4-4-3-3 Simulated Paper Canvas (Atas 4cm, Kiri 4cm, Bawah 3cm, Kanan 3cm) */
+.dikti-paper-sheet {
+  background: #FFFFFF;
+  color: #18181B;
+  border: 1px solid #D4D4D8;
+  box-shadow: 0 12px 32px -8px rgba(24, 24, 27, 0.12);
+  padding: 2.5rem 2rem 2rem 2.75rem;
+  font-family: 'Times New Roman', Georgia, serif;
+  line-height: 1.85;
+  position: relative;
+}
+.dikti-margin-ruler {
+  border-left: 2px dashed rgba(108, 92, 231, 0.35);
+  border-top: 2px dashed rgba(108, 92, 231, 0.35);
+  border-right: 1px dashed rgba(113, 113, 122, 0.25);
+  border-bottom: 1px dashed rgba(113, 113, 122, 0.25);
+}
+
+/* Similarity & PUEBI Inline Highlights */
+.hl-similarity {
+  background-color: rgba(245, 166, 35, 0.22);
+  border-bottom: 2px solid #F5A623;
+  padding: 0 2px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.hl-puebi {
+  background-color: rgba(220, 38, 38, 0.12);
+  border-bottom: 2px wavy #DC2626;
+  padding: 0 2px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* Segmented AI Switcher */
+.ai-pill-active {
+  background-color: #FFFFFF;
+  color: var(--ink-primary);
+  box-shadow: 0 2px 6px rgba(24, 24, 27, 0.08);
+  font-weight: 700;
+}
+.nocturnal-canvas .ai-pill-active {
+  background-color: var(--accent-neon-violet);
+  color: #FFFFFF;
+}
+
+/* Custom Scrollbar (subtle & clean) */
+.custom-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.custom-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: rgba(120, 117, 134, 0.35);
+  border-radius: 9999px;
+}
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(108, 92, 231, 0.55);
+}
+
+/* Skeleton Shimmer Loader */
+.skeleton {
+  background: linear-gradient(90deg, #F0EDF1 25%, #FAF6F0 50%, #F0EDF1 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: 8px;
+}
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Slide Aspect Ratio 16:9 Canvas */
+.slide-16-9 {
+  aspect-ratio: 16 / 9;
+}
+
+/* Popup Bukti Transfer di luar modal bertingkat (Prinsip 12 gas-tagihan-pembayaran) */
+#bukti-popup-root {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(15, 20, 41, 0.78);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+#bukti-popup-root.open {
+  display: flex;
+}
+
+/* Reduced Motion Respect (ui-ux-pro-max Priority #7) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print Optimization for Kwitansi & Laporan Integritas */
+@media print {
+  aside, header, .no-print { display: none !important; }
+  main { padding: 0 !important; margin: 0 !important; }
+}

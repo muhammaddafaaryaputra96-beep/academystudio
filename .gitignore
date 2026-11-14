@@ -1,0 +1,17 @@
+# OS & Editor
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+.vscode/
+
+# Dependencies & Logs
+node_modules/
+*.log
+
+# Local secrets & CLI deploy configs
+.env
+.env.local
+.clasp.json
+credentials*.json
+token*.json
